@@ -1,0 +1,21 @@
+@if(intake$(); as intake){
+   <h3>{{intake.date}}: you drunk: {{intake.total}}ml</h3> 
+   @if(intake.entries.length > 0) {
+      <div class="d-flex">
+         @for(entry of intake.entries; track $index){
+           <div>
+            <p>{{entry.timestamp}}</p>
+            <p>{{entry.type}}</p>
+            <p>{{entry.amount}}ml</p>
+
+           </div>
+         }
+         </div>
+      
+   } 
+   @else {
+      <p class="text-center">No entries for this day.</p>
+   }
+}
+
+    
