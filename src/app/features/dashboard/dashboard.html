@@ -1,19 +1,20 @@
 <section>
-  <div style="margin-top:1rem">
-    <label>Add manual(ml):
-      <input [(ngModel)]="amountToAdd" type="number" min="1" />
-      <button (click)="addManual()">Add</button>
-    </label>
+  <div class="m-2 d-flex gap-2 justify-content-center align-items-center" >
+      <input class="form-control my-3" [(ngModel)]="amountToAdd" type="number" min="1" placeholder="Add manual (ml)" #mountToAddCtrl="ngModel"/>
+      <button class="btn btn-primary" (click)="addManual()">Add</button>
+   
   </div>
 
   <div style="margin-top:1rem">
-    <h3>Bottles or Containers</h3>
+    <h3>Add Container</h3>
 
-    @for (container of containers$(); track $index) {
+    <div class="d-flex  gap-2">
+      @for (container of containers$(); track $index) {
       <div>
-        <button class="primary-button" (click)="addContainer(container.id)">{{ container.name }} — {{ container.volume | formatUnits }}</button>
+        <button class="btn btn-primary btn-lg" (click)="addContainer(container.name)">{{ container.name }} — {{ container.volume | formatUnits }}</button>
       </div>
     }
+    </div>
   </div>
 
 

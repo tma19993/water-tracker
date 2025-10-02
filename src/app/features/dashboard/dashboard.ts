@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component, computed, inject } from '@angular/core';
+import { Component, computed, inject, ViewChild } from '@angular/core';
 import { WaterIntake } from '../../core/services/water-intake';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgModel } from '@angular/forms';
 import { FormatUnitsPipe } from '../../shared/pipes/format-units-pipe';
 
 @Component({
@@ -11,20 +11,21 @@ import { FormatUnitsPipe } from '../../shared/pipes/format-units-pipe';
   styleUrl: './dashboard.scss'
 })
 export class Dashboard {
+    @ViewChild('mountToAddCtrl') usernameCtrl: NgModel;
   private waterIntakeService = inject(WaterIntake);
 
   public intake$ = this.waterIntakeService.intake$;
   public containers$ = this.waterIntakeService.containers$;
 
-  public amountToAdd = 0;
+  public amountToAdd: number;
   
   public addManual() {
     this.waterIntakeService.addManual(this.amountToAdd);
-    this.amountToAdd = 0;
+    this.usernameCtrl.reset();
   }
 
-  public addContainer(containerId: string) {
-    this.waterIntakeService.addContainer(containerId);
+  public addContainer(containerName: string) {
+    this.waterIntakeService.addContainer(containerName);
   }
  
 }

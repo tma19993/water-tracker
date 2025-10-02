@@ -1,5 +1,6 @@
 .container {
-    padding-top: 120px;
+    max-height: 100vh;
+    padding-top: 40px;
     display: grid;
     ;
     grid-template-columns: repeat(3, 1fr);

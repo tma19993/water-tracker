@@ -7,7 +7,7 @@ import { WaterEntryModel } from '../models';
 export class ContainerTypePipe implements PipeTransform {
 
   transform(value: WaterEntryModel): string {
-    return value.type === 'manual' ? 'Manual' : value.containerId! ;
+    return value.type === 'manual' ? 'Manual' : value.name! ;
   }
 
 }

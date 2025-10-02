@@ -1,11 +1,12 @@
 import { Component, inject } from '@angular/core';
 import { WaterIntake } from '../../core/services/water-intake';
-import { AsyncPipe, CommonModule } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Tile } from '../../shared/components/tile/tile';
 
 @Component({
   selector: 'app-containers',
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule,Tile],
   templateUrl: './containers.html',
   styleUrl: './containers.scss'
 })

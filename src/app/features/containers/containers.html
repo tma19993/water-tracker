@@ -1,14 +1,17 @@
 @if(containers$(); as containers) {
-@for(container of containers; track container.id) {
-<div>
-   <p> <strong>{{container.name}}</strong> - {{container.volume}}ml</p>
+ <div class="d-flex flex-column gap-2">
+    <h3 class="text-center">Your Containers</h3>
+@for(container of containers; track $index) {
+<app-tile>
+   <p class="m-0">{{$index + 1}}. <strong>{{container.name}}</strong> - {{container.volume}}ml</p>
 
-</div>
+</app-tile>
 }
+</div>
 <div>
-    <h3 class="mt-4 text-center">Add new Bottle</h3>
-    <input type="text" [(ngModel)]="containerName" class="form-control my-3" />
-    <input type="number" [(ngModel)]="containerSize" class="form-control my-3" />
+    <h3 class="mt-4 text-center">Add new Container</h3>
+    <input type="text" [(ngModel)]="containerName" class="form-control my-3"  placeholder="Container Name"/>
+    <input type="number" [(ngModel)]="containerSize" class="form-control my-3" placeholder="Container Size">
     <button (click)="addContainer()" class="btn btn-primary btn-lg">Add</button>
 
 

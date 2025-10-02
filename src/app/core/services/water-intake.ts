@@ -15,8 +15,8 @@ private intake = signal<WaterIntakeModel>({
   });
 
   private containers = signal<ContainerModel[]>([
-    { id: 'glass', name: 'Szklanka', volume: 250 },
-    { id: 'bottle', name: 'Butelka', volume: 500 },
+    { name: 'Szklanka', volume: 250 },
+    { name: 'Butelka', volume: 500 },
   ]);
 
    intake$ = this.intake.asReadonly();
@@ -33,14 +33,13 @@ private intake = signal<WaterIntakeModel>({
     this.updateIntake(entry);
   }
 
-  addContainer(containerId: string) {
-    const container = this.containers().find(c => c.id === containerId);
+  addContainer(containerName: string) {
+    const container = this.containers().find(c => c.name === containerName);
     if (!container) return;
-
     const entry: WaterEntryModel = {
       amount: container.volume,
       type: 'container',
-      containerId,
+      name: container.name,
       timestamp: new Date().toISOString()
     };
 
@@ -50,7 +49,6 @@ private intake = signal<WaterIntakeModel>({
 
   addCustomContainer(name: string, volume: number) {
     const newContainer: ContainerModel = {
-      id: crypto.randomUUID(),
       name,
       volume
     };

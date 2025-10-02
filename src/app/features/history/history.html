@@ -4,7 +4,7 @@
       <h3> Your goal: 2L</h3>
    </div>
    @if(intake.entries.length > 0) {
-      <div class="d-flex p-3">
+      <div class="d-flex p-3 gap-2 flex-wrap justify-content-center">
          @for(entry of intake.entries; track $index){
            <app-tile>
            <div class="d-flex flex-column align-items-center">
@@ -17,7 +17,10 @@
       
    } 
    @else {
-      <p class="text-center">No entries for this day.</p>
+      <div class="d-flex justify-content-center align-items-center">
+         <app-tile><p class="m-0">No entries yet. Start by adding some water!</p></app-tile>
+
+      </div>
    }
 }
 
