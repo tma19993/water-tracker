@@ -1,17 +1,13 @@
 <section>
-  <h2>Dashboard</h2>
-
-
-
   <div style="margin-top:1rem">
-    <label>Dodaj ręcznie (ml):
+    <label>Add manual(ml):
       <input [(ngModel)]="amountToAdd" type="number" min="1" />
-      <button (click)="addManual()">Dodaj</button>
+      <button (click)="addManual()">Add</button>
     </label>
   </div>
 
   <div style="margin-top:1rem">
-    <h3>Pojemniki</h3>
+    <h3>Bottles or Containers</h3>
 
     @for (container of containers$(); track $index) {
       <div>

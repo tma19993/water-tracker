@@ -1,14 +1,17 @@
 @if(intake$(); as intake){
-   <h3>{{intake.date}}: you drunk: {{intake.total}}ml</h3> 
+   <div class="d-flex justify-content-between align-items-center p-3">
+      <h3>{{intake.date}}: you drunk: {{intake.total}}ml</h3> 
+      <h3> Your goal: 2L</h3>
+   </div>
    @if(intake.entries.length > 0) {
-      <div class="d-flex">
+      <div class="d-flex p-3">
          @for(entry of intake.entries; track $index){
-           <div>
-            <p>{{entry.timestamp}}</p>
-            <p>{{entry.type}}</p>
-            <p>{{entry.amount}}ml</p>
-
+           <app-tile>
+           <div class="d-flex flex-column align-items-center">
+             <p class="m-0 fs-5">{{entry.timestamp | date: "hh:mm"}}</p>
+            <p class="m-0 fs-5"><strong>{{(entry | containerType ) | uppercase}}</strong> - {{entry.amount | formatUnits}}</p>
            </div>
+           </app-tile>
          }
          </div>
       
